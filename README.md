@@ -63,6 +63,12 @@ This project demonstrates the complete machine learning workflow for a binary cl
 - **Status**: Fully implemented with detailed explanations
 - **Use Case**: Reference for instructors and students who need guidance
 
+The solution notebook produces visualizations like this confusion matrix showing model performance:
+
+![Confusion Matrix](assets/confusion_matrix_normalized.png)
+
+*This normalized confusion matrix reveals how well the final optimized model performs for each class, showing the trade-offs between correctly identifying subscribers vs. non-subscribers.*
+
 ## Learning Objectives
 
 By completing this project, students will learn:
