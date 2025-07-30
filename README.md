@@ -1,89 +1,119 @@
-# Data Science Project Boilerplate
+# Logistic Regression: Banking Marketing Campaign
 
-This boilerplate is designed to kickstart data science projects by providing a basic setup for database connections, data processing, and machine learning model development. It includes a structured folder organization for your datasets and a set of pre-defined Python packages necessary for most data science tasks.
+A data science project analyzing a banking marketing campaign dataset to predict customer subscription to term deposits using logistic regression.
 
-## Structure
+## Project Overview
 
-The project is organized as follows:
+This project demonstrates the complete machine learning workflow for a binary classification problem:
+- Data acquisition and preprocessing
+- Feature encoding for categorical variables
+- Baseline model comparison
+- Hyperparameter optimization
+- Model evaluation and interpretation
 
-- `app.py` - The main Python script that you run for your project.
-- `explore.py` - A notebook to explore data, play around, visualize, clean, etc. Ideally the notebook code should be migrated to the app.py when moving to production.
-- `utils.py` - This file contains utility code for operations like database connections.
-- `requirements.txt` - This file contains the list of necessary python packages.
-- `models/` - This directory should contain your SQLAlchemy model classes.
-- `data/` - This directory contains the following subdirectories:
-  - `interin/` - For intermediate data that has been transformed.
-  - `processed/` - For the final data to be used for modeling.
-  - `raw/` - For raw data without any processing.
- 
-    
-## Setup
+**Business Context**: Help a bank optimize their marketing campaigns by predicting which customers are most likely to subscribe to a term deposit.
 
-**Prerequisites**
+## Getting Started
 
-Make sure you have Python 3.11+ installed on your. You will also need pip for installing the Python packages.
+### Prerequisites
+- GitHub account
+- Basic understanding of Python and machine learning concepts
 
-**Installation**
+### Setup Instructions
 
-Clone the project repository to your local machine.
+1. **Fork this repository**
+   - Click the "Fork" button in the top-right corner of this repository
+   - This creates your own copy of the project
 
-Navigate to the project directory and install the required Python packages:
+2. **Start a GitHub Codespace**
+   - Go to your forked repository
+   - Click the green "Code" button
+   - Select "Codespaces" tab
+   - Click "Create codespace on main"
+   - Wait for the environment to load (this may take a few minutes)
 
-```bash
-pip install -r requirements.txt
-```
+3. **Navigate to the notebooks**
+   - Open the `notebooks/` directory
+   - Choose between:
+     - `mvp.ipynb` - Template for students to complete
+     - `solution.ipynb` - Complete reference solution
 
-**Create a database (if needed)**
-
-Create a new database within the Postgres engine by customizing and executing the following command: `$ createdb -h localhost -U <username> <db_name>`
-Connect to the Postgres engine to use your database, manipulate tables and data: `$ psql -h localhost -U <username> <db_name>`
-NOTE: Remember to check the ./.env file information to get the username and db_name.
-
-Once you are inside PSQL you will be able to create tables, make queries, insert, update or delete data and much more!
-
-**Environment Variables**
-
-Create a .env file in the project root directory to store your environment variables, such as your database connection string:
-
-```makefile
-DATABASE_URL="your_database_connection_url_here"
-```
-
-## Running the Application
-
-To run the application, execute the app.py script from the root of the project directory:
-
-```bash
-python app.py
-```
-
-## Adding Models
-
-To add SQLAlchemy model classes, create new Python script files inside the models/ directory. These classes should be defined according to your database schema.
-
-Example model definition (`models/example_model.py`):
-
-```py
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
-
-Base = declarative_base()
-
-class ExampleModel(Base):
-    __tablename__ = 'example_table'
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
+## Project Structure
 
 ```
+├── notebooks/
+│   ├── mvp.ipynb        # Student template (incomplete)
+│   └── solution.ipynb   # Complete reference solution
+├── data/
+│   └── raw/             # Raw data files (auto-generated)
+├── models/              # Saved trained models
+├── assets/              # Generated plots and visualizations
+└── README.md            # This file
+```
 
-## Working with Data
+## Notebooks
 
-You can place your raw datasets in the data/raw directory, intermediate datasets in data/interim, and the processed datasets ready for analysis in data/processed.
+### MVP Notebook (`notebooks/mvp.ipynb`)
+- **Purpose**: Template for students to complete as part of their assignment
+- **Status**: Incomplete - contains structure and comments but missing implementation
+- **Use Case**: Students should fork the repository and complete this notebook
 
-To process data, you can modify the app.py script to include your data processing steps, utilizing pandas for data manipulation and analysis.
+### Solution Notebook (`notebooks/solution.ipynb`)
+- **Purpose**: Complete reference implementation
+- **Status**: Fully implemented with detailed explanations
+- **Use Case**: Reference for instructors and students who need guidance
 
-## Contributors
+The solution notebook produces visualizations like this confusion matrix showing model performance:
 
-This template was built as part of the 4Geeks Academy [Data Science and Machine Learning Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about [4Geeks Academy's BootCamp programs](https://4geeksacademy.com/us/programs) here.
+![Confusion Matrix](assets/confusion_matrix_normalized.png)
 
-Other templates and resources like this can be found on the school GitHub page.
+*This normalized confusion matrix reveals how well the final optimized model performs for each class, showing the trade-offs between correctly identifying subscribers vs. non-subscribers.*
+
+## Learning Objectives
+
+By completing this project, students will learn:
+
+1. **Data Preprocessing**
+   - Train-test splitting
+   - Categorical variable encoding
+   - Data type conversion
+
+2. **Model Development**
+   - Implementing baseline models (random, majority class)
+   - Training logistic regression classifiers
+   - Hyperparameter tuning with GridSearchCV
+
+3. **Model Evaluation**
+   - Accuracy metrics
+   - Confusion matrix analysis
+   - Performance comparison visualization
+
+4. **Best Practices**
+   - Cross-validation for robust evaluation
+   - Model persistence with pickle
+   - Reproducible data science workflows
+
+## Dataset
+
+**Source**: Banking Marketing Campaign Dataset
+- **Samples**: ~41,000 customer records
+- **Features**: Demographics, contact info, campaign details, economic indicators
+- **Target**: Binary classification (subscribe: yes/no)
+- **Challenge**: Imbalanced dataset with majority "no" responses
+
+## Technologies Used
+
+- **Python 3.x**
+- **pandas** - Data manipulation and analysis
+- **scikit-learn** - Machine learning algorithms and tools
+- **matplotlib** - Data visualization
+- **pathlib** - File system operations
+- **pickle** - Model serialization
+
+## Contributing
+
+This is an educational project. If you find issues or have suggestions:
+1. Create an issue describing the problem
+2. Fork the repository and make improvements
+3. Submit a pull request with your changes
+

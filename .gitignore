@@ -1,5 +1,3 @@
-__pycache__
-.env
-.learn
-.venv
-./src/solution.ipynb
+.vscode
+data
+models
